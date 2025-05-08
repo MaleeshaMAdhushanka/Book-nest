@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="registerPane" prefHeight="630.0" prefWidth="482.0" styleClass="pane" stylesheets="@../css/LoginPageStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.sliit.booknest.controller.UserImageFormController">
+   <children>
+      <Label layoutX="118.0" layoutY="62.0" styleClass="label-welcome" text="Register">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <MFXButton layoutX="205.0" layoutY="449.0" onAction="#btnNextOnAction" prefHeight="40.0" prefWidth="110.0" styleClass="mfx-button-login" text="Next" />
+      <Line endX="125.0" layoutX="124.0" layoutY="523.0" startX="44.0" strokeWidth="0.4" />
+      <Line endX="125.0" layoutX="229.0" layoutY="523.0" startX="44.0" strokeWidth="0.4" />
+      <Label layoutX="250.0" layoutY="513.0" styleClass="label-or" text="OR">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="167.0" layoutY="543.0" styleClass="label-dontHaveAccount" text="Already have account?">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="318.0" layoutY="543.0" onMouseClicked="#btnLogin" styleClass="label-register" text="Login">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="340.0" layoutY="32.0" styleClass="label-hostel" text="Book">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="398.0" layoutY="32.0" prefHeight="30.0" prefWidth="58.0" styleClass="label-d24" text="Nest">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblError" layoutX="120.0" layoutY="419.0" styleClass="label-error" text="Password doesnt match." visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="123.0" layoutY="119.0" styleClass="label-loginWithUsername" text="Add a Image">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Circle fx:id="circleImg" fill="WHITE" layoutX="257.0" layoutY="303.0" onMouseClicked="#circleImgOnAction" radius="104.0" stroke="BLACK" strokeType="INSIDE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Circle>
+   </children>
+</AnchorPane>
