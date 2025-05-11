@@ -4,7 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="630.0" prefWidth="950.0" styleClass="pane" stylesheets="@../css/LoginPageStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.sliit.booknest.LauncherWrapper">
+<AnchorPane prefHeight="630.0" prefWidth="950.0" styleClass="pane" stylesheets="@../css/LoginPageStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.sliit.booknest.controller.MainFormController">
    <children>
       <ImageView fitHeight="630.0" fitWidth="485.0" pickOnBounds="true" preserveRatio="true">
          <image>
