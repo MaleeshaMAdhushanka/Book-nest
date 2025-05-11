@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="680.0" prefWidth="804.0" stylesheets="@../css/PageStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.sliit.booknest.controller.BookSearchFormController">
+   <children>
+      <Label layoutX="27.0" layoutY="52.0" styleClass="label-dashboard" stylesheets="@../css/PageStyles.css" text="Book Search">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblBook" focusTraversable="false" layoutX="27.0" layoutY="202.0" prefHeight="428.0" prefWidth="749.0" stylesheets="@../css/TableStyle.css">
+         <columns>
+            <TableColumn fx:id="colId" prefWidth="92.0" style="-fx-alignment: center;" text="ID" />
+            <TableColumn fx:id="colTitle" prefWidth="168.0" style="-fx-alignment: center;" text="Title" />
+            <TableColumn fx:id="colAuthor" prefWidth="169.0" style="-fx-alignment: center;" text="Author" />
+            <TableColumn fx:id="colGenre" prefWidth="167.0" style="-fx-alignment: center;" text="Genre" />
+            <TableColumn fx:id="colAvailability" prefWidth="152.0" style="-fx-alignment: center;" text="Available" />
+         </columns>
+      </TableView>
+      <MFXTextField fx:id="txtSearch" floatMode="DISABLED" floatingText="Search" layoutX="27.0" layoutY="130.0" prefHeight="45.0" prefWidth="175.0" promptText="Search" styleClass="mfx-text-field-details" />
+      <MFXButton layoutX="238.0" layoutY="133.0" onAction="#btnSearchOnAction" prefHeight="40.0" prefWidth="110.0" styleClass="mfx-button-add" stylesheets="@../css/PageStyles.css" text="Search">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/search.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </MFXButton>
+   </children>
+</AnchorPane>
