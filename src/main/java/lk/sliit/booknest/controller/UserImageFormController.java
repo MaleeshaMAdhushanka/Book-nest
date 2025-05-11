@@ -48,7 +48,7 @@ public class UserImageFormController {
     void btnNextOnAction(ActionEvent event) {
         //set User Image temporarily
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/"))
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(""));
 
 
     }

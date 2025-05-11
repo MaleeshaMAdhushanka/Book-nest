@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="680.0" prefWidth="804.0" stylesheets="/css/PageStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.sliit.booknest.controller.UserBorrowBookFormController">
+   <children>
+      <TableView fx:id="tblBorrowBook" layoutX="26.0" layoutY="232.0" prefHeight="326.0" prefWidth="755.0">
+        <columns>
+          <TableColumn fx:id="colID" prefWidth="121.0" style="-fx-alignment: center;" text="ID" />
+          <TableColumn fx:id="colBookID" prefWidth="181.0" style="-fx-alignment: center;" text="BookID" />
+            <TableColumn fx:id="colBorrowDate" prefWidth="167.0" style="-fx-alignment: center;" text="Borrow Date" />
+            <TableColumn fx:id="colReturnDate" prefWidth="140.0" style="-fx-alignment: center;" text="Return Date" />
+            <TableColumn fx:id="colRetuened" prefWidth="140.0" style="-fx-alignment: center;" text="Retuened" />
+        </columns>
+      </TableView>
+      <Label layoutX="27.0" layoutY="52.0" text="Borrow Books">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <MFXFilterComboBox fx:id="cmbBookID" floatingText="Book ID" layoutX="225.0" layoutY="134.0" prefHeight="40.0" prefWidth="175.0" styleClass="mfx-combo-box" />
+      <MFXTextField fx:id="txtSearch" floatMode="DISABLED" floatingText="Search" layoutX="27.0" layoutY="131.0" onAction="#txtSearchOnAction" prefHeight="45.0" prefWidth="175.0" promptText="Search" styleClass="mfx-text-field-details" />
+      <MFXDatePicker fx:id="dpReturnDate" layoutX="440.0" layoutY="131.0" prefHeight="45.0" prefWidth="168.0" promptText="Return Date" styleClass="mfx-dp-picker" />
+      <MFXButton buttonType="RAISED" layoutX="640.0" layoutY="131.0" onAction="#btnBorrowOnAction" prefHeight="45.0" prefWidth="125.0" styleClass="mfx-button-add" stylesheets="@../css/PageStyles.css" text="Borrow">
+         <graphic>
+            <ImageView fitHeight="18.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </MFXButton>
+   </children>
+</AnchorPane>

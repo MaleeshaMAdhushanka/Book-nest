@@ -1,27 +1,19 @@
 package lk.sliit.booknest.controller;
-
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
 
-public class UserRegisterFormController {
+public class UserSettingFormController {
 
-
-        @FXML
-        private Label lblError;
 
         @FXML
-        private AnchorPane registerPane;
+        private Circle circleImg;
 
         @FXML
         private MFXTextField txtAddress;
-
-        @FXML
-        private MFXPasswordField txtConfirmPassword;
 
         @FXML
         private MFXTextField txtEmail;
@@ -33,14 +25,20 @@ public class UserRegisterFormController {
         private MFXPasswordField txtPassword;
 
         @FXML
-        void btnLogin(MouseEvent event) {
+        void btnDeleteOnAction(ActionEvent event) {
 
         }
 
         @FXML
-        void btnRegister(ActionEvent event) {
+        void btnUpdateOnAction(ActionEvent event) {
+
+        }
+
+        @FXML
+        void circleImgOnAction(MouseEvent event) {
 
         }
 
     }
+
 
