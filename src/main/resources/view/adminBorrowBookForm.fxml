@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="borrowBookPane" prefHeight="680.0" prefWidth="804.0" stylesheets="@../css/PageStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.sliit.booknest.controller.AdminBorrowBookFormController">
+   <children>
+      <Label layoutX="27.0" layoutY="52.0" styleClass="label-dashboard" stylesheets="@../css/PageStyles.css" text="Borrow Books">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <MFXButton layoutX="667.0" layoutY="140.0" onAction="#btnAddOnAction" prefHeight="40.0" prefWidth="110.0" styleClass="mfx-button-add" stylesheets="@../css/PageStyles.css" text="Add">
+         <graphic>
+            <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </MFXButton>
+      <TableView fx:id="tblBorrowBook" focusTraversable="false" layoutX="28.0" layoutY="204.0" prefHeight="433.0" prefWidth="749.0" stylesheets="@../css/TableStyle.css">
+         <columns>
+            <TableColumn fx:id="colID" prefWidth="62.0" style="-fx-alignment: center;" text="ID" />
+            <TableColumn fx:id="colUserID" prefWidth="161.0" style="-fx-alignment: center;" text="UserID" />
+            <TableColumn fx:id="colBookID" prefWidth="82.0" style="-fx-alignment: center;" text="BookID" />
+            <TableColumn fx:id="colBorrowDate" prefWidth="123.0" style="-fx-alignment: center;" text="Borrow Date" />
+            <TableColumn fx:id="colReturnDate" prefWidth="115.0" style="-fx-alignment: center;" text="Return Date" />
+            <TableColumn fx:id="colIsReturned" prefWidth="117.0" style="-fx-alignment: center;" text="Returned" />
+            <TableColumn fx:id="colRemove" prefWidth="88.0" style="-fx-alignment: center;" text="Remove" />
+         </columns>
+      </TableView>
+      <MFXFilterComboBox fx:id="cmbUserID" floatingText="User ID" layoutX="27.0" layoutY="139.0" prefHeight="42.0" prefWidth="175.0" styleClass="mfx-combo-box" />
+      <MFXFilterComboBox fx:id="cmbBookID" floatingText="Book ID" layoutX="247.0" layoutY="139.0" prefHeight="42.0" prefWidth="175.0" styleClass="mfx-combo-box" />
+      <MFXDatePicker fx:id="dpReturnDate" layoutX="456.0" layoutY="138.0" prefHeight="45.0" prefWidth="168.0" promptText="Return Date" />
+   </children>
+</AnchorPane>
