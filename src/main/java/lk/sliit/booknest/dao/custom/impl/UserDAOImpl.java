@@ -2,6 +2,8 @@ package lk.sliit.booknest.dao.custom.impl;
 
 import lk.sliit.booknest.dao.custom.UserDAO;
 import lk.sliit.booknest.entity.User;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -10,45 +12,60 @@ import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
 
-    private Connection connection;
-
+    private Session session;
     @Override
-    public void setConnection(Connection connection) {
-        this.connection = connection;
-
-    }
-    @Override
-    public List<User> getAll() throws SQLException {
-        List<User> users = new ArrayList<>();
-
-        String sql = "SELECRT usernm, "
-
-    }
-
-    @Override
-    public boolean save(User entity) throws SQLException {
-        return false;
-    }
-
-    @Override
-    public boolean update(User entity) throws SQLException {
-        return false;
-    }
-
-    @Override
-    public boolean delete(User entity) throws SQLException {
-        return false;
-    }
-
-    @Override
-    public User search(String id) throws SQLException {
-        return null;
+    public void setSession(Session session) {
+        this.session =session;
     }
 
 
 
+
     @Override
-    public boolean updateUsername(String newUsername, String oldUsername) {
-        return false;
+    public List<User> getAll() {
+        String hql = "FROM User";
+        Query<User> query = session.createQuery(hql, User.class);
+        return query.list();
     }
+
+    @Override
+    public void save(User entity) {
+        session.save(entity);
+    }
+
+    @Override
+    public void update(User entity)  {
+        session.update(entity);
+    }
+
+    @Override
+    public void delete(User entity)  {
+        session.delete(entity);
+    }
+
+    @Override
+    public User search(String id) {
+        return session.get(User.class, id);
+    }
+
+    @Override
+    public List<User> getUsersWithOverdueBooks() {
+        String hql = "SELECT u FROM User u JOIN u.bookTransactions t WHERE t.returnDate < CURRENT_DATE AND t.isReturned = false";
+        Query query = session.createQuery(hql);
+        List<User> users = query.list();
+        return users;
+    }
+
+    @Override
+    public int updateUserEmail(String email, String oldEmail) {
+        String hql ="UPDATE User set email = :email WHERE email = :oldEmail";
+        Query query = session.createQuery(hql);
+        query.setParameter("email", email);
+        query.setParameter("oldEmail", oldEmail);
+        int result = query.executeUpdate();
+        return result;
+    }
+
+
+
 }

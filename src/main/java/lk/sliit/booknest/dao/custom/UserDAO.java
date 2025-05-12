@@ -3,7 +3,12 @@ package lk.sliit.booknest.dao.custom;
 import lk.sliit.booknest.dao.CrudDAO;
 import lk.sliit.booknest.entity.User;
 
+import java.util.List;
+
 public interface UserDAO extends CrudDAO<User> {
-    boolean updateUsername(String newUsername, String oldUsername);
+
+    List<User> getUsersWithOverdueBooks();
+
+    int updateUserEmail(String email, String oldEmail);
 
 }

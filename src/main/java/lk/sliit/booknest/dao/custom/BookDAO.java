@@ -1,4 +1,7 @@
 package lk.sliit.booknest.dao.custom;
 
-public interface BookDAO {
+import lk.sliit.booknest.dao.CrudDAO;
+import lk.sliit.booknest.entity.Book;
+
+public interface BookDAO extends CrudDAO<Book> {
 }

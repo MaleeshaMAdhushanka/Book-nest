@@ -2,6 +2,8 @@ package lk.sliit.booknest.dao.custom.impl;
 
 import lk.sliit.booknest.dao.custom.AdminDAO;
 import lk.sliit.booknest.entity.Admin;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,105 +14,49 @@ import java.util.List;
 
 public class AdminDAOImpl implements AdminDAO {
 
-    private Connection connection;
+    private Session session;
+
 
     @Override
-    public void setConnection(Connection connection) {
-       this.connection = connection;
+    public void setSession(Session session) {
+        this.session = session;
     }
-
-
-
     @Override
-    public List<Admin> getAll() throws SQLException {
-        List<Admin> admins = new ArrayList<>();
-        String sql = "SELECT username, password, imgUrl FROM admin";
-        try(PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery()){
-
-            while (resultSet.next()){
-                String username = resultSet.getString("username");
-                String password = resultSet.getString("password");
-                String imgUrl = resultSet.getString("imgUrl");
-
-                Admin admin = new Admin(username, password, imgUrl);
-                admins.add(admin);
-            }
-
-        }
-        return admins;
+    public List<Admin> getAll() {
+        String hql = "FROM Admin";
+        Query<Admin> query = session.createQuery(hql, Admin.class);
+        return query.list();
     }
 
     @Override
-    public boolean save(Admin entity) throws SQLException {
-        String sql = "INSERT INTO admin(username, password, imgUrl) VALUES(?,?,?)";
-
-        try(PreparedStatement statement = connection.prepareStatement(sql)){
-            statement.setString(1, entity.getUsername());
-            statement.setString(2, entity.getPassword());
-            statement.setString(3, entity.getImgUrl());
-
-            return statement.executeUpdate() > 0;
-
-        }
-
+    public void save(Admin entity) {
+        session.save(entity);
     }
 
     @Override
-    public boolean update(Admin entity) throws SQLException {
-        String sql = "UPDATE admin SET password = ?, imgUrl = ? WHERE username = ?";
-
-        try(PreparedStatement statement = connection.prepareStatement(sql)){
-            statement.setString(1, entity.getPassword());
-            statement.setString(2, entity.getImgUrl());
-            statement.setString(3, entity.getUsername());
-
-            return statement.executeUpdate() > 0;
-        }
+    public void update(Admin entity) {
+        session.update(entity);
     }
 
     @Override
-    public boolean delete(Admin entity) throws SQLException {
-        String sql = "DELETE FROM admin WHERE username = ?";
-
-        try(PreparedStatement statement = connection.prepareStatement(sql)){
-            statement.setString(1, entity.getUsername());
-            return statement.executeUpdate() > 0;
-        }
-
+    public void delete(Admin entity) {
+        session.delete(entity);
     }
 
     @Override
-    public Admin search(String id) throws SQLException {
-        String sql = "SELECT username, password, imgUrl FROM admin WHERE username = ?";
-
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, id);
-
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    String username = resultSet.getString("username");
-                    String password = resultSet.getString("password");
-                    String imgUrl = resultSet.getString("imgUrl");
-
-                    return new Admin(username, password, imgUrl);
-                }
-            }
-        }
-        return null;
-
+    public Admin search(String id) {
+        return session.get(Admin.class, id);
     }
+
+
     @Override
-    public int updateAdminUsername(String userName, String oldUsername) throws SQLException {
-        String sql = "UPDATE admin SET username = ? WHERE username = ?";
-
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, userName);
-            statement.setString(2, oldUsername);
-
-            return statement.executeUpdate();
-        }
-
+    public int updateAdminUsername(String userName, String oldUsername) {
+        String hql ="UPDATE Admin set username = :username WHERE username = :oldUsername";
+        Query query = session.createQuery(hql);
+        query.setParameter("username", userName);
+        query.setParameter("oldUsername", oldUsername);
+        int result = query.executeUpdate();
+        return result;
     }
 
 
