@@ -5,39 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ec27529-dc4b-4f2f-b4e3-c6c3f6e62b69" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/CrudDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/DAOFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/SuperDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/AdminDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/BookDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/BookTransactionDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/BranchDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/UserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/impl/AdminDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/impl/BookDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/impl/BookTransactionDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/impl/BranchDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/impl/UserDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/BookTransactions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/Branch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/util/SessionFactoryConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/util/Utility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/hibernate.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/controller/UserRegisterFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/controller/UserRegisterFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/model/AdminiModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/model/BookModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/model/BookTransactionModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/model/BranchModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/model/UserModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lk/sliit/booknest/Launcher.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/sliit/booknest/Launcher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lk/sliit/booknest/LauncherWrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/sliit/booknest/LauncherWrapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/lk/sliit/booknest/db/DbConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/sliit/booknest/db/DbConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/BookTransactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/BookTransactions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/Branch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/Branch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,10 +87,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\OOP\booknest\src\main\resources" />
+      <recent name="F:\OOP\booknest\src\main\java\lk\sliit\booknest\util" />
       <recent name="F:\OOP\booknest\src\main\resources\view" />
       <recent name="F:\OOP\booknest\src\main\resources\images" />
       <recent name="F:\OOP\booknest\src\main\resources\fonts" />
-      <recent name="F:\OOP\booknest\src\main\resources\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\OOP\booknest\src\main\resources" />
@@ -164,7 +138,7 @@
       <workItem from="1746846781944" duration="3000" />
       <workItem from="1746935933261" duration="8863000" />
       <workItem from="1746996306423" duration="7427000" />
-      <workItem from="1747053020066" duration="7182000" />
+      <workItem from="1747053020066" duration="10661000" />
     </task>
     <servers />
   </component>

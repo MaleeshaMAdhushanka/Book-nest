@@ -1,20 +1,28 @@
 package lk.sliit.booknest.entity;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "user")
 public class User {
-
+    @Id
+    @Column(name = "email", length = 30)
     private String email;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "address")
     private String address;
 
+    @Column(name = "password")
     private String password;
 
     private String imgUrl;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private List<BookTransactions> bookTransactions = new ArrayList<>();
 
     public User() {
@@ -84,7 +92,6 @@ public class User {
                 ", address='" + address + '\'' +
                 ", password='" + password + '\'' +
                 ", imgUrl='" + imgUrl + '\'' +
-                ", bookTransactions=" + bookTransactions +
                 '}';
     }
 }

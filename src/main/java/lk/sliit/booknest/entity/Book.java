@@ -1,22 +1,34 @@
 package lk.sliit.booknest.entity;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "book")
 public class Book {
 
+    @Id
+    @Column(name = "book_id",length = 30)
     private String bookID;
 
+    @Column(name = "title")
     private  String title;
 
+    @Column(name = "author")
     private  String author;
 
+    @Column(name = "genre")
     private  String genre;
 
+    @Column(name = "available")
     private boolean available;
 
+    @ManyToOne
+    @JoinColumn(name = "branch_id", referencedColumnName = "branch_id", nullable = false )
     private Branch branch;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "book")
     private List<BookTransactions> bookTransactions = new ArrayList<>();
 
     public Book() {
@@ -79,14 +91,6 @@ public class Book {
         this.branch = branch;
     }
 
-    public List<BookTransactions> getBookTransactions() {
-        return bookTransactions;
-    }
-
-    public void setBookTransactions(List<BookTransactions> bookTransactions) {
-        this.bookTransactions = bookTransactions;
-    }
-
     @Override
     public String toString() {
         return "Book{" +
@@ -96,7 +100,6 @@ public class Book {
                 ", genre='" + genre + '\'' +
                 ", available=" + available +
                 ", branch=" + branch +
-                ", bookTransactions=" + bookTransactions +
                 '}';
     }
 }

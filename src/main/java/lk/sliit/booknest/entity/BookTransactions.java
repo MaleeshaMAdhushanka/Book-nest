@@ -1,25 +1,43 @@
 package lk.sliit.booknest.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "book_transaction")
 public class BookTransactions {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "transaction_id")
     private int transactionId;
+
+    @CreationTimestamp
     private LocalDate borrowDate;
+
     private LocalDate returnDate;
-    private boolean isReturned;
 
-    private Book book;
 
-    private User user;
+     boolean isReturned;
+
+     @ManyToOne
+     @JoinColumn(name ="book_id", nullable = false)
+     private Book book;
+
+     @ManyToOne
+     @JoinColumn(name = "email", nullable = false)
+     private User user;
 
     public BookTransactions() {
 
     }
 
-    public BookTransactions(Book book, User user, LocalDate returnDate) {
+    public BookTransactions(LocalDate returnDate, Book book, User user) {
+        this.returnDate = returnDate;
         this.book = book;
         this.user = user;
-        this.returnDate = returnDate;
     }
 
     public int getTransactionId() {

@@ -1,13 +1,27 @@
 package lk.sliit.booknest.entity;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "branch")
 public class Branch {
+    @Id
+    @Column(name = "branch_id", length = 30)
     private String branchID;
+
+    @Column(name = "branch_name")
     private String branchName;
+
+    @Column(name = "branch_address")
     private String branchAddress;
+
+    @ManyToOne
+    @JoinColumn(name = "username", referencedColumnName = "username")
     private Admin admin;
+
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "branch")
     private List<Book> books = new ArrayList<>();
 
     public Branch() {
@@ -50,23 +64,5 @@ public class Branch {
 
     public void setAdmin(Admin admin) {
         this.admin = admin;
-    }
-
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
-
-    @Override
-    public String toString() {
-        return "Branch{" +
-                "branchID='" + branchID + '\'' +
-                ", branchName='" + branchName + '\'' +
-                ", branchAddress='" + branchAddress + '\'' +
-                ", admin=" + admin +
-                '}';
     }
 }
