@@ -5,15 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ec27529-dc4b-4f2f-b4e3-c6c3f6e62b69" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/model/AdminiModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/model/BookModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/model/BookTransactionModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/model/BranchModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/model/UserModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/CrudDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/DAOFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/SuperDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/AdminDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/BookDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/BookTransactionDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/BranchDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/UserDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/impl/AdminDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/impl/BookDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/impl/BookTransactionDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/impl/BranchDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/dao/custom/impl/UserDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/Book.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/BookTransactions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/Branch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/util/SessionFactoryConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/util/Utility.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/hibernate.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/controller/AdminDashboardMainFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/controller/AdminDashboardMainFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/controller/UserLoginFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/controller/UserLoginFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/controller/UserRegisterFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/controller/UserRegisterFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/model/AdminiModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/model/BookModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/model/BookTransactionModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/model/BranchModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/sliit/booknest/model/UserModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/sliit/booknest/Launcher.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/sliit/booknest/Launcher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/sliit/booknest/LauncherWrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/sliit/booknest/LauncherWrapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/lk/sliit/booknest/db/DbConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/lk/sliit/booknest/db/DbConnection.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +48,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -61,32 +86,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LauncherWrapper.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/OOP/booknest/src/main/resources/view&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.26704547&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "Application.LauncherWrapper.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "F:/OOP/booknest/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.26704547",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\OOP\booknest\src\main\resources\view" />
@@ -138,11 +163,27 @@
       <workItem from="1746759845588" duration="13000" />
       <workItem from="1746846781944" duration="3000" />
       <workItem from="1746935933261" duration="8863000" />
-      <workItem from="1746996306423" duration="5800000" />
+      <workItem from="1746996306423" duration="7427000" />
+      <workItem from="1747053020066" duration="7182000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/lk/sliit/booknest/db/DbConnection.java</url>
+          <line>24</line>
+          <properties class="lk.sliit.booknest.db.DbConnection" method="getConnection">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
