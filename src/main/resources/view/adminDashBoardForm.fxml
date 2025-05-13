@@ -17,7 +17,7 @@
 
 <AnchorPane fx:id="dashBoardPane" prefHeight="680.0" prefWidth="804.0" stylesheets="@../css/PageStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.sliit.booknest.controller.AdminDashBoardFormController">
    <children>
-      <Label layoutX="27.0" layoutY="52.0" styleClass="label-dashboard" stylesheets="@../assets/css/PageStyles.css" text="Dashboard">
+      <Label layoutX="27.0" layoutY="52.0" styleClass="label-dashboard" stylesheets="@../css/PageStyles.css" text="Dashboard">
          <font>
             <Font size="30.0" />
          </font>

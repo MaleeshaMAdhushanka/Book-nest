@@ -1,6 +1,6 @@
 package lk.sliit.booknest.tm;
 
-public class LateBookTm {
+public class LateBookDetailTm {
 
     private String id;
 
@@ -14,7 +14,16 @@ public class LateBookTm {
 
     private String lateCount;
 
-    public LateBookTm() {
+    public LateBookDetailTm() {
+    }
+
+    public LateBookDetailTm(String id, String userId, String bookId, String borrowDate, String returnDate, String lateCount) {
+        this.id = id;
+        this.userId = userId;
+        this.bookId = bookId;
+        this.borrowDate = borrowDate;
+        this.returnDate = returnDate;
+        this.lateCount = lateCount;
     }
 
     public String getId() {
