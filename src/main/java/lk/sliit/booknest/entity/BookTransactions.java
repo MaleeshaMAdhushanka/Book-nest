@@ -34,7 +34,7 @@ public class BookTransactions {
 
     }
 
-    public BookTransactions(LocalDate returnDate, Book book, User user) {
+    public BookTransactions( Book book,User user ,LocalDate returnDate) {
         this.returnDate = returnDate;
         this.book = book;
         this.user = user;

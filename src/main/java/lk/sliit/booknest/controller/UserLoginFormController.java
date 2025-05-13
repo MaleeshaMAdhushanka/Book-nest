@@ -12,8 +12,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import lk.sliit.booknest.bo.BoFactory;
+import lk.sliit.booknest.bo.custom.UserBO;
 import lk.sliit.booknest.dto.UserDto;
-import lk.sliit.booknest.model.UserModel;
+//import lk.sliit.booknest.model.UserModel;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -33,7 +35,7 @@ public class UserLoginFormController {
     @FXML
     private MFXPasswordField txtPassword;
 
-    private final UserModel userModel = new UserModel();
+   UserBO userBO = (UserBO) BoFactory.getInstance().getBO(BoFactory.BOTypes.USER);
 
     @FXML
     void btnAdminLogin(MouseEvent event) throws IOException {
@@ -47,25 +49,29 @@ public class UserLoginFormController {
 
     @FXML
     void btnLogin(ActionEvent event) throws IOException {
-        boolean isLoginValidated = validateLogin();
+     boolean isLoginValidated   = validateLogin();
 
         if (!isLoginValidated) {
             return;
         }
-
         UserDto userDto = new UserDto(txtEmail.getText(), txtPassword.getText());
-        boolean isUserExist = userModel.isUserExist(userDto);
-        if (!isUserExist) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Username or Password").show();
 
-            //High lighting it
+       boolean isUserExit = userBO.isUserExist(userDto);
+
+       //user exit ekekenek nemei nam
+
+        if (!isUserExit) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Username or Password").show();
+            //Highlight Field
             txtEmail.getStyleClass().add("mfx-text-field-error");
             txtPassword.getStyleClass().add("mfx-text-field-error");
             return;
         }
 
         clearFields();
+
         openDashBoard();
+
 
 
     }
@@ -92,6 +98,7 @@ public class UserLoginFormController {
     }
 
     private boolean validateLogin() {
+
         boolean isEmailValid = Pattern.matches("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", txtEmail.getText());
         if (!isEmailValid) {
             txtEmail.requestFocus();

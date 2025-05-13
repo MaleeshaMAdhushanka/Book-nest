@@ -5,20 +5,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name ="admin")
+@Table(name = "admin")
 public class Admin {
 
     @Id
-    @Column(name = "username", length = 30)
-    private String  username;
+    @Column(name = "username",length = 30)
+    private String username;
 
     @Column(name = "password")
     private String password;
 
     private String imgUrl;
 
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "admin ")
-    private List<Branch> branch = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER ,mappedBy = "admin")
+    private List<Branch> branch= new ArrayList<>();
+
 
     public Admin() {
     }
@@ -60,4 +61,5 @@ public class Admin {
     public void setBranch(List<Branch> branch) {
         this.branch = branch;
     }
+
 }

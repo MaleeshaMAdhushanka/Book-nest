@@ -5,13 +5,27 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import lk.sliit.booknest.model.UserModel;
+import javafx.scene.paint.ImagePattern;
+import lk.sliit.booknest.bo.BoFactory;
+import lk.sliit.booknest.bo.custom.UserBO;
+import lk.sliit.booknest.bo.custom.impl.UserBOImpl;
+import lk.sliit.booknest.dto.UserDto;
+//import lk.sliit.booknest.model.UserModel;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 public class UserRegisterFormController {
 
@@ -37,8 +51,8 @@ public class UserRegisterFormController {
         @FXML
         private MFXPasswordField txtPassword;
         
-        private  final UserModel userModel = new UserModel();
-        
+
+      UserBO userBO = (UserBO) BoFactory.getInstance().getBO(BoFactory.BOTypes.USER);
 
         @FXML
         void btnLogin(MouseEvent event) throws IOException {
@@ -50,16 +64,82 @@ public class UserRegisterFormController {
         }
 
         @FXML
-        void btnRegister(ActionEvent event) {
+        void btnRegister(ActionEvent event) throws IOException {
+
                 boolean isLoginValidated = validateRegister();
 
                 if (!isLoginValidated) {
                      return;
                 }
+            //validate wela nam
+
+              String imgUrl = imageSave();
+
+            UserDto userDto = new UserDto(txtEmail.getText(), txtName.getText(), txtAddress.getText(), txtPassword.getText(), imgUrl);
+            boolean isSaved = userBO.saveUser(userDto);
+
+            if (isSaved) {
+                clearFields();
+                loadLoginPane();
+
+            } else {
+                new Alert(Alert.AlertType.ERROR, "User Already Exists").show();
+            }
 
         }
 
-        private boolean validateRegister() {
+    private void loadLoginPane() throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/userLoginForm.fxml"));
+        Pane loginPane =(Pane) fxmlLoader.load();
+        registerPane.getChildren().clear();
+        registerPane.getChildren().add(loginPane);
+
+    }
+
+    private void clearFields() {
+            txtName.clear();
+            txtAddress.clear();
+            txtEmail.clear();
+            txtPassword.clear();
+            txtConfirmPassword.clear();
+
+    }
+
+    private String imageSave() {
+            try{
+               ImagePattern imagePattern = (ImagePattern) UserBOImpl.circleImg.getFill();
+                Image userImage = imagePattern.getImage();
+                URI uri = new URI(userImage.getUrl());
+
+                File file = new File(uri);
+                String sourceLocation = file.getAbsolutePath();
+
+                //Get The user home directory in a platform independent way
+                String userHomeDir = System.getProperty("user.home");
+                Path directoryPath = Paths.get(userHomeDir,"Desktop", "users");
+
+                if (!Files.exists(directoryPath)) {
+                    Files.createDirectories(directoryPath);
+                }
+
+                if (!(sourceLocation.equals("/images/addUserImage.png"))) {
+                    Path sourcePath = file.toPath();
+                    Path destinationPath = Paths.get(directoryPath.toString(), file.getName());
+                    Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+
+                    return "file:" + destinationPath;
+                }
+
+                return "/images/addUserImage.png";
+
+            } catch (URISyntaxException | IOException e) {
+                new Alert(Alert.AlertType.ERROR,"Check The  File path").show();
+                throw new RuntimeException(e);
+            }
+       }
+
+    private boolean validateRegister() {
             boolean isNameValid  = txtName.getText().matches("^[\\p{L} '-]+$");
 
                 if (!isNameValid) {

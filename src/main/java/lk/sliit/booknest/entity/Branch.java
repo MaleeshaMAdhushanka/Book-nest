@@ -7,8 +7,9 @@ import java.util.List;
 @Entity
 @Table(name = "branch")
 public class Branch {
+
     @Id
-    @Column(name = "branch_id", length = 30)
+    @Column(name = "branch_id",length = 30)
     private String branchID;
 
     @Column(name = "branch_name")
@@ -18,11 +19,12 @@ public class Branch {
     private String branchAddress;
 
     @ManyToOne
-    @JoinColumn(name = "username", referencedColumnName = "username")
+    @JoinColumn(name = "username",referencedColumnName = "username")
     private Admin admin;
 
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "branch")
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER ,mappedBy = "branch")
     private List<Book> books = new ArrayList<>();
+
 
     public Branch() {
     }

@@ -10,17 +10,17 @@ public class UserBorrowBookTm {
 
     private String returnDate;
 
-    private String isReturnDate;
+    private String isReturned;
 
     public UserBorrowBookTm() {
     }
 
-    public UserBorrowBookTm(String id, String bookId, String borrowDate, String returnDate, String isReturnDate) {
+    public UserBorrowBookTm(String id, String bookId, String borrowDate, String returnDate, String isReturned) {
         this.id = id;
         this.bookId = bookId;
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
-        this.isReturnDate = isReturnDate;
+        this.isReturned = isReturned;
     }
 
     public String getId() {
@@ -55,11 +55,11 @@ public class UserBorrowBookTm {
         this.returnDate = returnDate;
     }
 
-    public String getIsReturnDate() {
-        return isReturnDate;
+    public String getIsReturned() {
+        return isReturned;
     }
 
-    public void setIsReturnDate(String isReturnDate) {
-        this.isReturnDate = isReturnDate;
+    public void setIsReturned(String isReturned) {
+        this.isReturned = isReturned;
     }
 }

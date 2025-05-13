@@ -4,16 +4,16 @@ public class UserTm {
 
     private String name;
     private String email;
-    private String password;
+    private String address;
 
     private UserTm(){
 
     }
 
-    public UserTm(String name, String email, String password) {
+    public UserTm(String name, String email, String address) {
         this.name = name;
         this.email = email;
-        this.password = password;
+        this.address = address;
     }
 
     public String getName() {
@@ -32,12 +32,12 @@ public class UserTm {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getAddress() {
+        return address;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class UserTm {
         return "UserTm{" +
                 "name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
 }

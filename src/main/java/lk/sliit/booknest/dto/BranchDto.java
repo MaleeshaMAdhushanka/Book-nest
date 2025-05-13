@@ -13,6 +13,13 @@ public class BranchDto {
     public BranchDto() {
     }
 
+    public BranchDto(String branchID, String branchName, String address, String adminID) {
+        this.branchID = branchID;
+        this.branchName = branchName;
+        this.address = address;
+        this.adminID = adminID;
+    }
+
     public String getBranchID() {
         return branchID;
     }
