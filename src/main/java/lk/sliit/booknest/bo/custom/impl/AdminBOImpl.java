@@ -1,7 +1,6 @@
 package lk.sliit.booknest.bo.custom.impl;
 
 import javafx.scene.shape.Circle;
-;
 import lk.sliit.booknest.bo.custom.AdminBO;
 import lk.sliit.booknest.dao.DAOFactory;
 import lk.sliit.booknest.dao.custom.AdminDAO;

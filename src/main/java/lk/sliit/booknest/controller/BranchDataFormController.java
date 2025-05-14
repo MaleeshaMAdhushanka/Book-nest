@@ -46,20 +46,23 @@ public class BranchDataFormController {
         }
 
         private void loadAdmins() {
-              List<AdminDto> adminDtoList = adminBO.getAllAdmin();
-              for (AdminDto adminDto : adminDtoList){
-                      cmbAdmin.getItems().add(adminDto.getUsername());
-              }
-
+                List<AdminDto> adminDtoList = adminBO.getAllAdmin();
+                for (AdminDto adminDto : adminDtoList) {
+                        cmbAdmin.getItems().add(adminDto.getUsername());
+                }
         }
+
 
         @FXML
         void btnActionOnAction(ActionEvent event) {
-                boolean isValidate = validateFields();
 
-                if (!isValidate) {
-                     return;
+                boolean isValidated = validateFields();
+
+                if (!isValidated){
+                        return;
                 }
+
+
                 if (btnAction.getText().equals("Add")) {
                         BranchDto branchDto = new BranchDto(txtBranchID.getText(), txtBranchName.getText(), txtBranchAddress.getText(), cmbAdmin.getValue());
                         boolean isSaved = branchBO.saveBranch(branchDto);
@@ -86,10 +89,11 @@ public class BranchDataFormController {
                         }
                 }
 
+
         }
 
+        private boolean validateFields() {
 
-        private boolean validateFields(){
                 boolean isBranchIDValid = txtBranchID.getText().matches("^BR[0-9]{3}$");
 
                 if(!isBranchIDValid){
@@ -133,6 +137,12 @@ public class BranchDataFormController {
                 return true;
         }
 
+        @FXML
+        void btnCancel(ActionEvent event) {
+                closeTheWindow();
+        }
+
+
         public void clearFields(){
                 txtBranchID.clear();
                 txtBranchName.clear();
@@ -140,14 +150,9 @@ public class BranchDataFormController {
                 cmbAdmin.clear();
         }
 
-        @FXML
-        void btnCancel(ActionEvent event) {
-                closeTheWindow();
-
-        }
 
         private void closeTheWindow() {
-                Stage userDataStage = (Stage) txtBranchName.getScene().getWindow();
+                Stage userDataStage= (Stage) txtBranchName.getScene().getWindow();
                 userDataStage.close();
         }
 
@@ -155,24 +160,25 @@ public class BranchDataFormController {
                 this.branchFormController = branchFormController;
         }
 
+        public void loadBranchData(String branchID){
+                BranchDto branchDto = branchBO.searchBranch(branchID);
+                setFields(branchDto);
+        }
+
         public void setBtnAndLblName(String action){
                 btnAction.setText(action);
-                lblAction.setText(action + "Branch");
+                lblAction.setText(action + " Branch");
         }
 
-        public void loadBranchData(String branchID){
-              BranchDto branchDto = branchBO.searchBranch(branchID);
-              setFields(branchDto);
-        }
-
-        private void setFields(BranchDto branchDto) {
+        private void setFields(BranchDto branchDto){
                 txtBranchID.setText(branchDto.getBranchID());
-                txtBranchName.setText(branchDto.getAddress());
-                txtBranchID.setText(branchDto.getAddress());
+                txtBranchName.setText(branchDto.getBranchName());
+                txtBranchAddress.setText(branchDto.getAddress());
                 cmbAdmin.setText(branchDto.getAdminID());
 
                 //Disable Email Field
-
                 txtBranchID.setEditable(false);
         }
+
+
 }

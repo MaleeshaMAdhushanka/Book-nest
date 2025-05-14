@@ -56,18 +56,20 @@ public class BookFormController {
         private MFXTextField txtSearch;
         
         BookBO bookBO = (BookBO) BoFactory.getInstance().getBO(BoFactory.BOTypes.BOOK);
-        
-        public  void initialize() {
-            setCellValueFactory();
-            loadAllBooks();
+
+        public void initialize(){
+                setCellValueFactory();
+                loadAllBooks();
         }
 
         private void setCellValueFactory() {
+
                 colId.setCellValueFactory(new PropertyValueFactory<>("bookID"));
                 colTitle.setCellValueFactory(new PropertyValueFactory<>("bookTitle"));
                 colAuthor.setCellValueFactory(new PropertyValueFactory<>("author"));
                 colGenre.setCellValueFactory(new PropertyValueFactory<>("genre"));
                 colAvailability.setCellValueFactory(new PropertyValueFactory<>("availability"));
+
 
                 Callback<TableColumn<BookTm, String>, TableCell<BookTm, String>> colRemoveCellFactory
                         = new Callback<TableColumn<BookTm, String>, TableCell<BookTm, String>>()
@@ -81,7 +83,7 @@ public class BookFormController {
 
                                         {
 
-                                                ImageView delete = new ImageView(new Image("/assets/images/remove.png"));
+                                                ImageView delete = new ImageView(new Image("/images/remove.png"));
                                                 delete.setFitHeight(30);
                                                 delete.setPreserveRatio(true);
 
@@ -140,7 +142,7 @@ public class BookFormController {
 
                                         {
 
-                                                ImageView update = new ImageView(new Image("/assets/images/edit.png"));
+                                                ImageView update = new ImageView(new Image("/images/edit.png"));
                                                 update.setFitHeight(30);
                                                 update.setPreserveRatio(true);
 
@@ -181,26 +183,10 @@ public class BookFormController {
                         }
                 };
                 colUpdate.setCellFactory(colUpdateCellFactory);
+
+
         }
 
-        private void updateOnAction(String bookId) throws IOException {
-                FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/bookDataForm.fxml"));
-                Parent rootNode = fxmlLoader.load();
-
-                BookDataFormController bookDataFormController = fxmlLoader.getController();
-                bookDataFormController.setBookFormController(this);
-
-                //Set Button Name
-                bookDataFormController.setBtnAndLblName("Update");
-                bookDataFormController.loadBookData(bookId);
-
-                Scene scene = new Scene(rootNode);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.centerOnScreen();
-                stage.setTitle("Update Book");
-                stage.show();
-        }
 
         @FXML
         void btnAddOnAction(ActionEvent event) throws IOException {
@@ -219,7 +205,40 @@ public class BookFormController {
                 stage.centerOnScreen();
                 stage.setTitle("Add Book");
                 stage.show();
+        }
 
+        private void updateOnAction(String bookId) throws IOException {
+                FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/bookDataForm.fxml"));
+                Parent rootNode = fxmlLoader.load();
+
+                BookDataFormController bookDataFormController = fxmlLoader.getController();
+                bookDataFormController.setBookFormController(this);
+
+                //Set Button Name
+                bookDataFormController.setBtnAndLblName("Update");
+                bookDataFormController.loadBookData(bookId);
+
+                Scene scene = new Scene(rootNode);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.centerOnScreen();
+                stage.setTitle("Update User");
+                stage.show();
+        }
+
+        public void loadAllBooks() {
+                ObservableList<BookTm> books = FXCollections.observableArrayList();
+                bookBO.getAllBooks().forEach(bookDto -> {
+                        books.add(new BookTm(
+                                bookDto.getBookId(),
+                                bookDto.getTitle(),
+                                bookDto.getAuthor(),
+                                bookDto.getGenre(),
+                                bookDto.isAvailability()? "Yes" : "No"
+                        ));
+                });
+
+                tblBook.setItems(books);
         }
 
         @FXML
@@ -236,25 +255,8 @@ public class BookFormController {
                                         bookTm.getAvailability().toLowerCase().contains(keyword)
                         );
                         tblBook.setItems(filteredData);
-                }    
+                }
+        }
 
-        }
-        public void loadAllBooks(){
-                ObservableList<BookTm> books = FXCollections.observableArrayList();
-                bookBO.getAllBooks().forEach(bookDto -> {
-                        books.add(new BookTm(
-                                bookDto.getBookId(), 
-                                bookDto.getTitle(),
-                                bookDto.getAuthor(),
-                                bookDto.getGenre(),
-                                bookDto.isAvailability()? "Yes" : "NO"
-                                
-                        ));
-                });
-                
-                tblBook.setItems(books);
-                
-        }
-        
 
 }

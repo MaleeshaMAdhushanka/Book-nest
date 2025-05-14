@@ -96,7 +96,7 @@ public class UserFormController {
                                         final MFXButton btn = new MFXButton("");
 
                                         {
-                                                ImageView delete = new ImageView(new Image("/assets/images/remove.png"));
+                                                ImageView delete = new ImageView(new Image("/images/remove.png"));
                                                 delete.setFitHeight(30);
                                                 delete.setPreserveRatio(true);
 
@@ -157,7 +157,7 @@ public class UserFormController {
                                         {
 
 
-                                                ImageView update = new ImageView(new Image("/assets/images/edit.png"));
+                                                ImageView update = new ImageView(new Image("/images/edit.png"));
                                                 update.setFitHeight(30);
                                                 update.setPreserveRatio(true);
 

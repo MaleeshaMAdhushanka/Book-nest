@@ -45,20 +45,24 @@ public class BookDataFormController {
 
     BookBO bookBO =(BookBO) BoFactory.getInstance().getBO(BoFactory.BOTypes.BOOK);
 
-    public void initialize() {
+    public void initialize(){
         loadBranches();
     }
 
     private void loadBranches() {
         List<BranchDto> branchDtoList = branchBO.getAllBranch();
-        for (BranchDto branchDto : branchDtoList){
+        for (BranchDto branchDto : branchDtoList) {
             colBranch.getItems().add(branchDto.getBranchID());
         }
-
     }
 
-    private void closeTheWindow(){
-        Stage userDataStage = (Stage) txtBookId.getScene().getWindow();
+    @FXML
+    void btnCancelOnAction(ActionEvent event) {
+        closeTheWindow();
+    }
+
+    private void closeTheWindow() {
+        Stage userDataStage= (Stage) txtBookId.getScene().getWindow();
         userDataStage.close();
     }
 
@@ -66,9 +70,10 @@ public class BookDataFormController {
     void btnAction(ActionEvent event) {
         boolean isValidated = validateFields();
 
-        if (!isValidated) {
-           return;
+        if (!isValidated){
+            return;
         }
+
         if (btnAction.getText().equals("Add")){
             BookDto dto = new BookDto(txtBookId.getText(),txtTitle.getText(),txtAuthor.getText(),txtGenre.getText(),true,colBranch.getValue());
             boolean isSaved = bookBO.saveBook(dto);
@@ -97,9 +102,19 @@ public class BookDataFormController {
         }
 
 
+
+    }
+
+    private void clearFields() {
+        txtBookId.clear();
+        txtAuthor.clear();
+        txtGenre.clear();
+        txtTitle.clear();
+        colBranch.getSelectionModel().clearSelection();
     }
 
     private boolean validateFields() {
+
         boolean isBookIdValid = txtBookId.getText().matches("^B[0-9]{3}$");
 
         if (!isBookIdValid) {
@@ -156,21 +171,9 @@ public class BookDataFormController {
 
 
         return true;
-    }
-
-    private void clearFields(){
-        txtBookId.clear();
-        txtAuthor.clear();
-        txtGenre.clear();
-        txtTitle.clear();
-        colBranch.getSelectionModel().clearSelection();
-    }
-
-    @FXML
-    void btnCancelOnAction(ActionEvent event) {
-        closeTheWindow();
 
     }
+
 
     public void setBookFormController(BookFormController bookFormController) {
         this.bookFormController = bookFormController;
@@ -180,9 +183,10 @@ public class BookDataFormController {
         btnAction.setText(action);
         lblAction.setText(action + " Book");
     }
+
     public void loadBookData(String bookId) {
-      BookDto bookDto = bookBO.searchBook(bookId);
-      setFields(bookDto);
+        BookDto bookDto = bookBO.searchBook(bookId);
+        setFields(bookDto);
     }
 
     private void setFields(BookDto bookDto) {
@@ -190,7 +194,7 @@ public class BookDataFormController {
         txtAuthor.setText(bookDto.getAuthor());
         txtGenre.setText(bookDto.getGenre());
         txtTitle.setText(bookDto.getTitle());
-        colBranch.setText(bookDto.getBookId());
+        colBranch.setText(bookDto.getBranchID());
 
         txtBookId.setEditable(false);
     }

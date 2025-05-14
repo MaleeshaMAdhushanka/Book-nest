@@ -65,25 +65,13 @@ public class BranchFormController {
                 loadAllBranches();
         }
 
-        public void loadAllBranches() {
-                ObservableList<BranchTm> branchTms = FXCollections.observableArrayList();
-
-                branchBO.getAllBranch().forEach(branchDto -> {
-                        branchTms.add(new BranchTm(
-                                branchDto.getBranchID(),
-                                branchDto.getBranchName(),
-                                branchDto.getAddress(),
-                                branchDto.getAdminID()
-                        ));
-                });
-                tblBranch.setItems(branchTms);
-        }
-
         private void setCellValueFactory() {
                 colBranchID.setCellValueFactory(new PropertyValueFactory<>("branchId"));
                 colBranchName.setCellValueFactory(new PropertyValueFactory<>("branchName"));
                 colBranchAddress.setCellValueFactory(new PropertyValueFactory<>("branchAddress"));
                 colBranchAdmin.setCellValueFactory(new PropertyValueFactory<>("adminName"));
+
+
 
                 Callback<TableColumn<BranchTm, String>, TableCell<BranchTm, String>> colRemoveCellFactory
                         = new Callback<TableColumn<BranchTm, String>, TableCell<BranchTm, String>>()
@@ -96,7 +84,7 @@ public class BranchFormController {
                                         final MFXButton btn = new MFXButton("");
 
                                         {
-                                                ImageView delete = new ImageView(new Image("/assets/images/remove.png"));
+                                                ImageView delete = new ImageView(new Image("/images/remove.png"));
                                                 delete.setFitHeight(30);
                                                 delete.setPreserveRatio(true);
 
@@ -144,6 +132,8 @@ public class BranchFormController {
 
                 colRemove.setCellFactory(colRemoveCellFactory);
 
+
+
                 Callback<TableColumn<BranchTm, String>, TableCell<BranchTm, String>> colUpdateCellFactory
                         = new Callback<>() {
                         @Override
@@ -153,7 +143,7 @@ public class BranchFormController {
 
                                         {
 
-                                                ImageView update = new ImageView(new Image("/assets/images/edit.png"));
+                                                ImageView update = new ImageView(new Image("/images/edit.png"));
                                                 update.setFitHeight(30);
                                                 update.setPreserveRatio(true);
 
@@ -196,9 +186,51 @@ public class BranchFormController {
 
         }
 
+
+        public void loadAllBranches() {
+                ObservableList<BranchTm> branchTms = FXCollections.observableArrayList();
+                branchBO.getAllBranch().forEach(branchDto -> {
+                        branchTms.add(new BranchTm(
+                                branchDto.getBranchID(),
+                                branchDto.getBranchName(),
+                                branchDto.getAddress(),
+                                branchDto.getAdminID()
+                        ));
+                });
+                tblBranch.setItems(branchTms);
+        }
+
+
+        @FXML
+        void btnAddOnAction(ActionEvent event) throws IOException {
+
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/branchDataForm.fxml"));
+                Parent rootNode = loader.load();
+
+
+                BranchDataFormController branchDataFormController = loader.getController();
+                branchDataFormController.setBranchFormController(this);
+
+
+                //Set Button Name
+                branchDataFormController.setBtnAndLblName("Add");
+
+
+                Scene scene = new Scene(rootNode);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.centerOnScreen();
+                stage.setTitle("Add User");
+                stage.show();
+
+
+        }
+
+
         private void updateOnAction(String branchId) throws IOException {
                 FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/branchDataForm.fxml"));
                 Parent rootNode = loader.load();
+
                 BranchDataFormController branchDataFormController = loader.getController();
                 branchDataFormController.setBranchFormController(this);
 
@@ -210,30 +242,11 @@ public class BranchFormController {
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.centerOnScreen();
-                stage.setTitle("Update Branch");
+                stage.setTitle("Update User");
                 stage.show();
         }
 
-        @FXML
-        void btnAddOnAction(ActionEvent event) throws IOException {
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/branchDataForm.fxml"));
-                Parent rootNode = loader.load();
 
-                BranchDataFormController branchDataFormController = loader.getController();
-                branchDataFormController.setBranchFormController(this);
-
-                //Set Button Name
-                branchDataFormController.setBtnAndLblName("Add");
-
-                Scene scene = new Scene(rootNode);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.centerOnScreen();
-                stage.setTitle("Add Branch");
-                stage.show();
-
-
-        }
 
         @FXML
         void btnSearchOnAction(ActionEvent event) {
@@ -249,7 +262,6 @@ public class BranchFormController {
                         );
                         tblBranch.setItems(filteredData);
                 }
-
         }
 
 
